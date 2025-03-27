@@ -1,50 +1,57 @@
 # Microcontroller_8051
-1. Title: Traffic Light System Using MCU
 
-Objective: Design a traffic light system using Red, Yellow, and Green LEDs that mimic real-world traffic signals.
+___1. Title: Traffic Light System Using AT89C52__
 
-Functional Requirements:
+*Objective:* Design a traffic light system using Red, Yellow, and Green LEDs that mimic real-world traffic signals.
 
-The Red LED should turn ON for 5 seconds (Stop Signal).
-After that, the Yellow LED should turn ON for 2 seconds (Get Ready Signal).
-The Green LED should turn ON for 5 seconds (Go Signal).
+*Functional Requirements*
+The Red LED should turn ON for 5 seconds (Stop Signal).\
+After that, the Yellow LED should turn ON for 2 seconds (Get Ready Signal).\
+The Green LED should turn ON for 5 seconds (Go Signal).\
 The cycle should repeat continuously.
 
-Hardware Components Required:
-Microcontroller: AT89C52 (8051 family)
-LEDs: Red, Yellow, Green
-Resistors: 330Ω (for current limiting)
-Crystal Oscillator: 11.0592 MHz
-Capacitors: 22pF (for stabilizing the oscillator)
-Power Supply: 5V DC
-Connecting Wires
-Breadboard/PCB
+__Hardware Components Required:__
+ - Microcontroller: AT89C52 (8051 family)
+ - LEDs: Red, Yellow, Green
+ - Resistors: 330Ω (for current limiting)
+ - Crystal Oscillator: 11.0592 MHz
+ - Capacitors: 22pF (for stabilizing the oscillator)
+ - Power Supply: 5V DC
+ - Connecting Wires
+ - Breadboard/PCB
 
-Hardware Connection:
-Red LED → Connected to P1.0
-Yellow LED → Connected to P1.1
-Green LED → Connected to P1.2
-Common Ground (GND) for all LEDs
-Microcontroller powered by 5V DC supply
+__Hardware Connection:__
+ - Red LED → Connected to P1.0
+ - Yellow LED → Connected to P1.1
+ - Green LED → Connected to P1.2
+ - Common Ground (GND) for all LEDs
+ - Microcontroller powered by 5V DC supply
 
-Software Used:
-Keil uVision – For writing and compiling the C program
-Proteus – For simulating the circuit
-Flash Magic – For burning the code into the microcontroller
+__Software Used:__
+ - Keil uVision – For writing and compiling the C program
+ - Proteus – For simulating the circuit
+ - Flash Magic – For burning the code into the microcontroller
 
-Working:
-The Red LED turns ON for 5 seconds, signaling vehicles to STOP.
-The Yellow LED turns ON for 2 seconds, indicating vehicles to GET READY.
-The Green LED turns ON for 5 seconds, allowing vehicles to GO.
-The cycle repeats continuously to simulate real-world traffic signals.
+__Working:__
+ - The Red LED turns ON for 5 seconds, signaling vehicles to STOP.
+ - The Yellow LED turns ON for 2 seconds, indicating vehicles to GET READY.
+ - The Green LED turns ON for 5 seconds, allowing vehicles to GO.
+ - The cycle repeats continuously to simulate real-world traffic signals.
 
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/93f0168a-37c0-4f7c-9802-fe4947d40f93)
+
+__Hardware Simulation:__
+
+
+__Project Code:__
+```
 #include <reg52.h>  // Header file for 89C52
-
 // Define LED connections
 sbit RedLED = P1^0;
 sbit YellowLED = P1^1;
 sbit GreenLED = P1^2;
-
 // Function to create delay in seconds
 void delay_seconds(unsigned int sec) {
     unsigned int i, j;
@@ -61,7 +68,6 @@ void delay_seconds(unsigned int sec) {
         }
     }
 }
-
 void main() {
     while(1) {  // Infinite loop
         // Red LED ON for 5 seconds
@@ -69,13 +75,11 @@ void main() {
         YellowLED = 0;
         GreenLED = 0;
         delay_seconds(5);
-        
         // Yellow LED ON for 2 seconds
         RedLED = 0;
         YellowLED = 1;
         GreenLED = 0;
         delay_seconds(2);
-        
         // Green LED ON for 5 seconds
         RedLED = 0;
         YellowLED = 0;
@@ -83,60 +87,69 @@ void main() {
         delay_seconds(5);
     }
 }
+```
 ___________________________________________________________________________________________________________________________________________________________________________
-2. Title: Counter Control System Using MCU
 
-Objective: Write an Embedded C program that performs the following functions:
+__2. Title: Counter Control System Using AT89C52__
 
-Switch 1 → Resets the counter to zero.
-Switch 2 → Increments the counter by one.
-Switch 3 → Decrements the counter by one.
+*Objective:* Write an Embedded C program that performs the following functions:
+
+Switch 1 → Resets the counter to zero.\
+Switch 2 → Increments the counter by one.\
+Switch 3 → Decrements the counter by one.\
 Display the counter value on display.
 
-Hardware Components Required:
-Microcontroller: AT89C52 (8051 family)
-7-Segment Display: Common cathode
-Push Buttons (Switches): 3 (for Reset, Increment, and Decrement)
-Resistors: 10kΩ (for pull-up configuration)
-Crystal Oscillator: 11.0592 MHz
-Capacitors: 22pF (for oscillator stabilization)
-Power Supply: 5V DC
-Connecting Wires
-Breadboard/PCB
+__Hardware Components Required:__
+ - Microcontroller: AT89C52 (8051 family)
+ - 7-Segment Display: Common cathode
+ - Push Buttons (Switches): 3 (for Reset, Increment, and Decrement)
+ - Resistors: 10kΩ (for pull-up configuration)
+ - Crystal Oscillator: 11.0592 MHz
+ - Capacitors: 22pF (for oscillator stabilization)
+ - Power Supply: 5V DC
+ - Connecting Wires
+ - Breadboard/PCB
 
-Hardware Connection:
+__Hardware Connection:__\
 Switch Connections:
-Reset Switch (S1) → Connected to P3.0 (Active LOW)
-Increment Switch (S2) → Connected to P3.1 (Active LOW)
-Decrement Switch (S3) → Connected to P3.2 (Active LOW)
+ - Reset Switch (S1) → Connected to P3.0 (Active LOW)
+ - Increment Switch (S2) → Connected to P3.1 (Active LOW)
+ - Decrement Switch (S3) → Connected to P3.2 (Active LOW)
 
 7-Segment Display Connection (Common Cathode, Single Digit):
-P2 → Connected to the 7-segment display segments
+ - P2 → Connected to the 7-segment display segments
 
 Power Supply:
-VCC (5V) → Microcontroller and 7-Segment Display
-GND → Common Ground for all components
+ - VCC (5V) → Microcontroller and 7-Segment Display
+ - GND → Common Ground for all components
 
-Software Used:
-Keil uVision – For writing and compiling the C program
-Proteus – For simulating the circuit
-Flash Magic – For burning the code into the microcontroller
+__Software Used:__
+ - Keil uVision – For writing and compiling the C program
+ - Proteus – For simulating the circuit
+ - Flash Magic – For burning the code into the microcontroller
 
-Working:
-Initially, the counter starts at zero and is displayed on the 7-segment display.
-When the Reset button (S1) is pressed, the counter resets to zero.
-When the Increment button (S2) is pressed, the counter increases by one, up to a maximum of 9.
-When the Decrement button (S3) is pressed, the counter decreases by one, down to a minimum of 0.
-The system continuously updates the 7-segment display with the current counter value.
-A debounce delay is added to ensure accurate button detection.
+__Working:__
+ - Initially, the counter starts at zero and is displayed on the 7-segment display.
+ - When the Reset button (S1) is pressed, the counter resets to zero.
+ - When the Increment button (S2) is pressed, the counter increases by one, up to a maximum of 9.
+ - When the Decrement button (S3) is pressed, the counter decreases by one, down to a minimum of 0.
+ - The system continuously updates the 7-segment display with the current counter value.
+ - A debounce delay is added to ensure accurate button detection.
 
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/3c3ce3bc-8758-494a-b46c-3a84c4ee71a2)
+
+__Hardware Simulation:__
+
+
+__Project Code:__
+```
 #include <reg52.h>  // Header file for 89C52
-
 // Define switch connections
 sbit ResetSW = P3^0;
 sbit IncrementSW = P3^1;
 sbit DecrementSW = P3^2;
-
 // 7-segment display patterns (common cathode)
 unsigned char seg_pattern[] = {
     0x3F, // 0
@@ -150,36 +163,29 @@ unsigned char seg_pattern[] = {
     0x7F, // 8
     0x6F  // 9
 };
-
 int counter = 0; // Global counter variable
-
 // Simple delay function in milliseconds
 void delay_ms(unsigned int ms) {
     unsigned int i, j;
     for(i = 0; i < ms; i++)
         for(j = 0; j < 1275; j++); // Adjust based on clock frequency
 }
-
 // Modified button press detection without sbit parameter
 bit checkReset() { return (ResetSW == 0); }
 bit checkIncrement() { return (IncrementSW == 0); }
 bit checkDecrement() { return (DecrementSW == 0); }
-
 // Function to display number on 7-segment
 void display_number(int num) {
     // For single digit display (0-9)
     if(num < 0) num = 0; // Ensure non-negative
     if(num > 9) num = 9; // Limit to single digit
-    
     P2 = seg_pattern[num]; // Display the number
 }
-
 void main() {
     // Initialize switches as input
     ResetSW = 1;
     IncrementSW = 1;
     DecrementSW = 1;
-    
     while(1) {
         // Check reset button with debounce
         if(checkReset()) {
@@ -189,7 +195,6 @@ void main() {
                 counter = 0;
             }
         }
-        
         // Check increment button with debounce
         if(checkIncrement()) {
             delay_ms(20);
@@ -198,7 +203,6 @@ void main() {
                 if(counter < 9) counter++;
             }
         }
-        
         // Check decrement button with debounce
         if(checkDecrement()) {
             delay_ms(20);
@@ -207,58 +211,64 @@ void main() {
                 if(counter > 0) counter--;
             }
         }
-        
         // Display current counter value
         display_number(counter);
-        
         // Small delay for display stability
         delay_ms(100);
     }
 }
-
+```
 _________________________________________________________________________________________________________________________________________________________________
-3. Title: Seven Segment Display - Counting 0 to 9 Using MCU
+__3. Title: Seven Segment Display - Counting 0 to 9 Using AT89C52__
 
-Objective: Write an Embedded C  program to interface a 7-segment display with MCU that:
+*Objective:* Write an Embedded C  program to interface a 7-segment display with AT89C52 that:
 
-Displays digits from 0 to 9 sequentially.
-Each digit should be displayed with a 1-second delay.
+Displays digits from 0 to 9 sequentially.\
+Each digit should be displayed with a 1-second delay.\
 The sequence should continuously repeat.
 
-Hardware Components Required:
-Microcontroller: AT89C52 (8051 family)
-7-Segment Display: Common cathode
-Resistors: 330Ω (for current limiting)
-Crystal Oscillator: 11.0592 MHz
-Capacitors: 22pF (for stabilizing the oscillator)
-Power Supply: 5V DC
-Connecting Wires
-Breadboard/PCB
+__Hardware Components Required:__
+ - Microcontroller: AT89C52 (8051 family)
+ - 7-Segment Display: Common cathode
+ - Resistors: 330Ω (for current limiting)
+ - Crystal Oscillator: 11.0592 MHz
+ - Capacitors: 22pF (for stabilizing the oscillator)
+ - Power Supply: 5V DC
+ - Connecting Wires
+ - Breadboard/PCB
 
-Hardware Connection:
+__Hardware Connection:__\
 7-Segment Display Connection (Common Cathode, Single Digit):
-Segment Pins (a-g) → Connected to P2.0 - P2.6
-Common Cathode Pin → Connected to GND
+ - Segment Pins (a-g) → Connected to P2.0 - P2.6
+ - Common Cathode Pin → Connected to GND
 
 Microcontroller Power Supply:
-VCC (5V) → Microcontroller and 7-segment display
-GND → Common ground for all components
+ - VCC (5V) → Microcontroller and 7-segment display
+ - GND → Common ground for all components
 
-Software Used:
-Keil uVision – For writing and compiling the C program
-Proteus – For simulating the circuit
-Flash Magic – For burning the code into the microcontroller
+__Software Used:__
+ - Keil uVision – For writing and compiling the C program
+ - Proteus – For simulating the circuit
+ - Flash Magic – For burning the code into the microcontroller
 
-Working:
-The microcontroller continuously updates the 7-segment display to show numbers from 0 to 9.
-Each digit is displayed for 1 second before moving to the next.
-After reaching 9, the counter resets back to 0 and the sequence repeats indefinitely.
-The 7-segment display patterns are stored in an array, and the value of P2 is updated accordingly.
-A delay function ensures that each number remains displayed for 1 second before updating to the next digit.
+__Working:__
+ - The microcontroller continuously updates the 7-segment display to show numbers from 0 to 9.
+ - Each digit is displayed for 1 second before moving to the next.
+ - After reaching 9, the counter resets back to 0 and the sequence repeats indefinitely.
+ - The 7-segment display patterns are stored in an array, and the value of P2 is updated accordingly.
+ - A delay function ensures that each number remains displayed for 1 second before updating to the next digit.
+
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/29c39716-aa3b-43bf-9529-da7ac1e780cc)
 
 
+__Hardware Simulation:__
+
+
+__Project Code:__
+```
 #include <reg52.h>  // Header file for 89C52
-
 // 7-segment display patterns (common cathode)
 unsigned char seg_pattern[] = {
     0x3F, // 0 (a,b,c,d,e,f)
@@ -272,95 +282,95 @@ unsigned char seg_pattern[] = {
     0x7F, // 8 (a,b,c,d,e,f,g)
     0x6F  // 9 (a,b,c,d,f,g)
 };
-
 // Function to create 1 second delay
 void delay_1s() {
     unsigned int i, j;
     for(i = 0; i < 1000; i++)      // 1000ms = 1s
         for(j = 0; j < 1275; j++); // Adjust based on crystal frequency
 }
-
 void main() {
     unsigned char count = 0;
-    
     while(1) {  // Infinite loop
         // Display current count on 7-segment
         P2 = seg_pattern[count];
-        
         // 1 second delay
         delay_1s();
-        
         // Increment count (0-9)
         count++;
         if(count > 9) count = 0;  // Reset after 9
     }
 }
-
+```
 ___________________________________________________________________________________________________________________________________________________________________________
 
-4. Title: LCD Interfacing with MCU
+___4. Title: LCD Interfacing with AT89C52__
 
-Objective: Write an Embedded C  program to interface a 16x2 LCD display with MCU that performs the following tasks:
+*Objective:* Write an Embedded C  program to interface a 16x2 LCD display with MCU that performs the following tasks:
 
-Display the message "Hello World!" on the first row of the LCD.
-Continuously update the second row with a counter value that increments every second.
+Display the message "Hello World!" on the first row of the LCD.\
+Continuously update the second row with a counter value that increments every second.\
 Implement a clear screen feature using a push button that resets the counter and clears the LCD display.
 
 
-Hardware Components Required:
-Microcontroller: AT89C52 (8051 family)
-16x2 LCD Display
-Resistors: 10kΩ (for contrast adjustment)
-Potentiometer: 10kΩ (for LCD brightness control)
-Crystal Oscillator: 11.0592 MHz
-Capacitors: 22pF (for stabilizing the oscillator)
-Push Button: For clearing the display and resetting the counter
-Pull-up Resistor: 10kΩ for the push button
-Power Supply: 5V DC
-Connecting Wires
-Breadboard/PCB
+__Hardware Components Required:__
+ - Microcontroller: AT89C52 (8051 family)
+ - 16x2 LCD Display
+ - Resistors: 10kΩ (for contrast adjustment)
+ - Potentiometer: 10kΩ (for LCD brightness control)
+ - Crystal Oscillator: 11.0592 MHz
+ - Capacitors: 22pF (for stabilizing the oscillator)
+ - Push Button: For clearing the display and resetting the counter
+ - Pull-up Resistor: 10kΩ for the push button
+ - Power Supply: 5V DC
+ - Connecting Wires
+ - Breadboard/PCB
 
-Hardware Connection:
+__Hardware Connection:__\
 LCD Display to Microcontroller (8051)
-RS (Register Select) → P3.0
-RW (Read/Write) → P3.1
-EN (Enable) → P3.2
-Data Pins (D0 - D7) → P2.0 - P2.7
-VCC (5V) → Power Supply
-GND → Common ground
-VEE (Contrast Pin) → Middle pin of 10kΩ potentiometer
-Push Button for Resetting Counter and Clearing LCD
-One side connected to P3.3
-Other side connected to GND
-Pull-up resistor (10kΩ) connected between P3.3 and VCC
+ - RS (Register Select) → P3.0
+ - RW (Read/Write) → P3.1
+ - EN (Enable) → P3.2
+ - Data Pins (D0 - D7) → P2.0 - P2.7
+ - VCC (5V) → Power Supply
+ - GND → Common ground
+ - VEE (Contrast Pin) → Middle pin of 10kΩ potentiometer
+ - Push Button for Resetting Counter and Clearing LCD
+ - One side connected to P3.3
+ - Other side connected to GND
+ - Pull-up resistor (10kΩ) connected between P3.3 and VCC
 
-Software Used:
-Keil uVision – For writing and compiling the C program
-Proteus – For simulating the circuit
-Flash Magic – For burning the code into the microcontroller
+__Software Used:__
+ - Keil uVision – For writing and compiling the C program
+ - Proteus – For simulating the circuit
+ - Flash Magic – For burning the code into the microcontroller
 
-Working:
-LCD Initialization: The microcontroller initializes the 16x2 LCD in 8-bit mode.
-Displaying "Hello World!": The first row of the LCD always displays "Hello World!".
-Counter Display: The second row continuously updates with an incrementing counter value every 1 second.
-Clear Button Feature:
-If the clear button is pressed, the counter resets to 0, and the LCD is cleared.
-The LCD then re-displays "Hello World!" in the first row and resumes counting from zero.
-Loop Execution: The program runs continuously, updating the display and responding to the button press.
+__Working:__
+- LCD Initialization: The microcontroller initializes the 16x2 LCD in 8-bit mode.
+- Displaying "Hello World!": The first row of the LCD always displays "Hello World!".
+- Counter Display: The second row continuously updates with an incrementing counter value every 1 second.
+- Clear Button Feature:
+    - If the clear button is pressed, the counter resets to 0, and the LCD is cleared.
+    - The LCD then re-displays "Hello World!" in the first row and resumes counting from zero.
+    - Loop Execution: The program runs continuously, updating the display and responding to the button press.
+
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/e4a2204e-30a4-46bd-a386-0d5854a914d1)
+
+__Hardware Simulation:__
 
 
+__Project Code:__
+```
 #include <reg52.h>  // Header file for 89C52
 #include <stdio.h>  // For sprintf function
-
 // LCD control pins
 sbit RS = P3^0;    // Register Select
 sbit RW = P3^1;    // Read/Write
 sbit EN = P3^2;    // Enable
 sbit CLEAR_BTN = P3^3; // Clear screen button
-
 // LCD data port
 #define LCD_PORT P2
-
 // Function prototypes
 void LCD_Init();
 void LCD_Command(unsigned char);
@@ -369,19 +379,14 @@ void LCD_String(char*);
 void LCD_Clear();
 void delay_ms(unsigned int);
 bit isButtonPressed();
-
 unsigned int counter = 0;  // Global counter variable
-
 void main() {
     char buffer[16];  // Buffer for counter display
-    
     // Initialize LCD
     LCD_Init();
-    
     // Display static message
     LCD_Command(0x80);  // Move cursor to first line
     LCD_String("Hello World!");
-    
     while(1) {
         // Check clear button
         if(isButtonPressed()) {
@@ -390,18 +395,15 @@ void main() {
             LCD_Command(0x80);  // Move cursor to first line
             LCD_String("Hello World!");
         }
-        
         // Update counter display
         LCD_Command(0xC0);  // Move cursor to second line
         sprintf(buffer, "Count: %04d", counter);
         LCD_String(buffer);
-        
         // Increment counter after 1 second
         delay_ms(1000);
         counter++;
     }
 }
-
 // Initialize LCD
 void LCD_Init() {
     delay_ms(20);      // LCD power-up delay
@@ -411,7 +413,6 @@ void LCD_Init() {
     LCD_Command(0x01); // Clear display
     delay_ms(2);       // Clear display delay
 }
-
 // Send command to LCD
 void LCD_Command(unsigned char cmd) {
     LCD_PORT = cmd;
@@ -422,7 +423,6 @@ void LCD_Command(unsigned char cmd) {
     EN = 0;
     delay_ms(1);
 }
-
 // Write data to LCD
 void LCD_Write(unsigned char dat) {
     LCD_PORT = dat;
@@ -433,20 +433,17 @@ void LCD_Write(unsigned char dat) {
     EN = 0;
     delay_ms(1);
 }
-
 // Display string on LCD
 void LCD_String(char *str) {
     while(*str) {
         LCD_Write(*str++);
     }
 }
-
 // Clear LCD screen
 void LCD_Clear() {
     LCD_Command(0x01);  // Clear display command
     delay_ms(2);        // Clear display delay
 }
-
 // Button press detection with debounce
 bit isButtonPressed() {
     if(CLEAR_BTN == 0) {  // Button pressed (active low)
@@ -458,94 +455,98 @@ bit isButtonPressed() {
     }
     return 0;
 }
-
 // Simple delay function in milliseconds
 void delay_ms(unsigned int ms) {
     unsigned int i, j;
     for(i = 0; i < ms; i++)
         for(j = 0; j < 1275; j++); // Adjust based on clock frequency
 }
-
+```
 
 _____________________________________________________________________________________________________________________________________________________________________
-5. Title: Basic Calculator Using MCU and Keypad with LCD Display
+__5. Title: Basic Calculator Using AT89C52 and Keypad with LCD Display__
 
-Objective:
-Write an Embedded C  program to implement a basic calculator that performs the following arithmetic operations using a 4x4 keypad and a 16x2 LCD display:
+*Objective:* Write an Embedded C  program to implement a basic calculator that performs the following arithmetic operations using a 4x4 keypad and a 16x2 LCD display:
 
-Addition (+)
-Subtraction (-)
-Multiplication (*)
+Addition (+)\
+Subtraction (-)\
+Multiplication (*)\
 Division (/)
-Functional Requirements:
 
-The user should enter the first number.
-The user should then press an operator key (+, -, *, /).
-The user should enter the second number.
-Pressing the ‘#’ key should display the result on the LCD.
-Pressing the ‘*’ key should clear the display and reset the calculator.
+*Functional Requirements:*\
+The user should enter the first number.\
+The user should then press an operator key (+, -, *, /).\
+The user should enter the second number.\
+Pressing the ‘#’ key should display the result on the LCD.\
+Pressing the ‘*’ key should clear the display and reset the calculator
 
-Hardware Components Required
-Microcontroller: 8051 (AT89C52 or similar)
-7-Segment Display / LCD: 16x2 LCD for display
-Keypad: 4x4 Matrix Keypad
-Push Button: For reset or clear function
-Resistors & Capacitors: As per circuit requirements
-Crystal Oscillator: 11.0592 MHz for 8051
-Power Supply: 5V DC
-Connecting Wires & Breadboard / PCB
-LEDs (if required for debugging)
+__Hardware Components Required:__
+ - Microcontroller: 8051 (AT89C52 or similar)
+ - 7-Segment Display / LCD: 16x2 LCD for display
+ - Keypad: 4x4 Matrix Keypad
+ - Push Button: For reset or clear function
+ - Resistors & Capacitors: As per circuit requirements
+ - Crystal Oscillator: 11.0592 MHz for 8051
+ - Power Supply: 5V DC
+ - Connecting Wires & Breadboard 
+ - LEDs (if required for debugging)
 
-Hardware Connection
-For 7-Segment Display with MCU
-Connect P2 of the microcontroller to the 7-segment display for segment control.
-Ensure common cathode configuration.
-Connect the GND of the display to the GND of MCU.
-Use current-limiting resistors (220Ω) between each segment and MCU.
+__Hardware Connection:__
+ - For 7-Segment Display with MCU
+ - Connect P2 of the microcontroller to the 7-segment display for segment control.
+ - Ensure common cathode configuration.
+ - Connect the GND of the display to the GND of MCU.
+ - Use current-limiting resistors (220Ω) between each segment and MCU.
 
 For LCD Interfacing
-P2 (Data Pins D0-D7): Connect to LCD data pins.
-P3.0 (RS): Connect to LCD RS.
-P3.1 (RW): Connect to LCD RW.
-P3.2 (EN): Connect to LCD Enable.
-P3.3 (Clear Button): Connect push button to reset the display.
+ - P2 (Data Pins D0-D7): Connect to LCD data pins.
+ - P3.0 (RS): Connect to LCD RS.
+ - P3.1 (RW): Connect to LCD RW.
+ - P3.2 (EN): Connect to LCD Enable.
+ - P3.3 (Clear Button): Connect push button to reset the display.
 
 For Keypad Interfacing
-Rows (R1-R4): Connect to P1.0-P1.3.
-Columns (C1-C4): Connect to P1.4-P1.7.
-Use pull-up resistors if necessary.
+ - Rows (R1-R4): Connect to P1.0-P1.3.
+ - Columns (C1-C4): Connect to P1.4-P1.7.
+ - Use pull-up resistors if necessary.
 
-Software Used
-Keil uVision – For Embedded C programming.
-Proteus – For simulation.
-Flash Magic / ISP Programmer – For flashing the program into the MCU.
-
-
-Working
-7-Segment Display Counting (0-9)
-The microcontroller initializes the 7-segment display.
-It continuously loops through numbers 0 to 9, displaying each for 1 second.
-The process repeats indefinitely.
-LCD Interfacing with MCU
-The LCD initializes and displays "Hello World!" on the first row.
-The counter updates every 1 second on the second row.
-If the push button is pressed, the counter resets, and the display clears.
-Basic Calculator with Keypad and LCD
-The user enters the first number using the 4x4 keypad.
-The user selects an operator (+, -, *, /).
-The user enters the second number.
-Pressing ‘=’ displays the result on the LCD.
-Pressing ‘C’ clears the display and resets the calculator.
+__Software Used:__
+ - Keil uVision – For Embedded C programming.
+ - Proteus – For simulation.
+ - Flash Magic / ISP Programmer – For flashing the program into the MCU.
 
 
+__Working:__
+ - 7-Segment Display Counting (0-9)
+ - The microcontroller initializes the 7-segment display.
+ - It continuously loops through numbers 0 to 9, displaying each for 1 second.
+ - The process repeats indefinitely.
+ - LCD Interfacing with MCU
+ - The LCD initializes and displays "Hello World!" on the first row.
+ - The counter updates every 1 second on the second row.
+ - If the push button is pressed, the counter resets, and the display clears.
+ - Basic Calculator with Keypad and LCD
+ - The user enters the first number using the 4x4 keypad.
+ - The user selects an operator (+, -, *, /).
+ - The user enters the second number.
+ - Pressing ‘=’ displays the result on the LCD.
+ - Pressing ‘C’ clears the display and resets the calculator.
+
+__Software Simulation:__
+
+![image](https://github.com/user-attachments/assets/da86cea7-814e-495e-bcf1-37cf3b5369b9)
+
+__Hardware Simulation:__
+
+
+__Project Code:__
+```
 #include <reg52.h>
 #include <stdio.h>
-
 // LCD control pins
 sbit RS = P3^0;
 sbit RW = P3^1;
 sbit EN = P3^2;
-
 // Keypad connections
 sbit ROW1 = P1^0;
 sbit ROW2 = P1^1;
@@ -555,9 +556,7 @@ sbit COL1 = P1^4;
 sbit COL2 = P1^5;
 sbit COL3 = P1^6;
 sbit COL4 = P1^7;
-
 #define LCD_PORT P2
-
 // Keypad mapping
 const char keypad[4][4] = {
     {'7', '8', '9', '/'},
@@ -565,13 +564,11 @@ const char keypad[4][4] = {
     {'1', '2', '3', '-'},
     {'C', '0', '=', '+'}
 };
-
 // Calculator variables
 float num1 = 0, num2 = 0, result = 0;
 char op = 0;
 unsigned char input_stage = 0; // 0:num1, 1:op, 2:num2
 char buffer[16];
-
 // Function prototypes
 void LCD_Init(void);
 void LCD_Command(unsigned char);
@@ -582,16 +579,13 @@ void delay_ms(unsigned int);
 char Keypad_Scan(void);
 void Calculator_Process(char key);
 void Display_Result(void);
-
 void main() {
     char key;
-    
     LCD_Init();
     LCD_Clear();
     LCD_String("Calculator Ready");
     delay_ms(1000);
     LCD_Clear();
-    
     while(1) {
         key = Keypad_Scan();
         if(key != 0) {
@@ -600,7 +594,6 @@ void main() {
         }
     }
 }
-
 void Calculator_Process(char key) {
     // Check for numeric input (0-9)
     if(key >= '0' && key <= '9') {
@@ -664,7 +657,6 @@ void Calculator_Process(char key) {
         }
     }
 }
-
 void Display_Result(void) {
     LCD_Clear();
     sprintf(buffer, "%.2f %c %.2f", num1, op, num2);
@@ -673,10 +665,8 @@ void Display_Result(void) {
     sprintf(buffer, "= %.2f", result);
     LCD_String(buffer);
 }
-
 char Keypad_Scan(void) {
     char key = 0;
-    
     // Scan Row 1
     COL1 = 0; COL2 = COL3 = COL4 = 1;
     if(!ROW1) { delay_ms(5); if(!ROW1) key = keypad[0][0]; }
@@ -684,7 +674,6 @@ char Keypad_Scan(void) {
     if(!ROW3) { delay_ms(5); if(!ROW3) key = keypad[2][0]; }
     if(!ROW4) { delay_ms(5); if(!ROW4) key = keypad[3][0]; }
     COL1 = 1;
-    
     // Scan Row 2
     COL2 = 0; COL1 = COL3 = COL4 = 1;
     if(!ROW1) { delay_ms(5); if(!ROW1) key = keypad[0][1]; }
@@ -692,7 +681,6 @@ char Keypad_Scan(void) {
     if(!ROW3) { delay_ms(5); if(!ROW3) key = keypad[2][1]; }
     if(!ROW4) { delay_ms(5); if(!ROW4) key = keypad[3][1]; }
     COL2 = 1;
-    
     // Scan Row 3
     COL3 = 0; COL1 = COL2 = COL4 = 1;
     if(!ROW1) { delay_ms(5); if(!ROW1) key = keypad[0][2]; }
@@ -700,7 +688,6 @@ char Keypad_Scan(void) {
     if(!ROW3) { delay_ms(5); if(!ROW3) key = keypad[2][2]; }
     if(!ROW4) { delay_ms(5); if(!ROW4) key = keypad[3][2]; }
     COL3 = 1;
-    
     // Scan Row 4
     COL4 = 0; COL1 = COL2 = COL3 = 1;
     if(!ROW1) { delay_ms(5); if(!ROW1) key = keypad[0][3]; }
@@ -708,10 +695,8 @@ char Keypad_Scan(void) {
     if(!ROW3) { delay_ms(5); if(!ROW3) key = keypad[2][3]; }
     if(!ROW4) { delay_ms(5); if(!ROW4) key = keypad[3][3]; }
     COL4 = 1;
-    
     return key;
 }
-
 void LCD_Init(void) {
     delay_ms(20);
     LCD_Command(0x38);
@@ -720,7 +705,6 @@ void LCD_Init(void) {
     LCD_Command(0x01);
     delay_ms(2);
 }
-
 void LCD_Command(unsigned char cmd) {
     LCD_PORT = cmd;
     RS = 0;
@@ -730,7 +714,6 @@ void LCD_Command(unsigned char cmd) {
     EN = 0;
     delay_ms(1);
 }
-
 void LCD_Write(unsigned char dat) {
     LCD_PORT = dat;
     RS = 1;
@@ -740,105 +723,102 @@ void LCD_Write(unsigned char dat) {
     EN = 0;
     delay_ms(1);
 }
-
 void LCD_String(char *str) {
     while(*str) {
         LCD_Write(*str++);
     }
 }
-
 void LCD_Clear(void) {
     LCD_Command(0x01);
     delay_ms(2);
 }
-
 void delay_ms(unsigned int ms) {
     unsigned int i, j;
     for(i = 0; i < ms; i++)
         for(j = 0; j < 1275; j++);
 }
-
+```
 
 ______________________________________________________________________________________________________________________________________________________________________
 
-6. Title: DC Motor Control System Using MCU
-Objective:
-Write an Embedded C  program to interface a DC motor with MCU that performs the following tasks:
+__6. Title: DC Motor Control System Using AT89C52__
+
+*Objective:* Write an Embedded C  program to interface a DC motor with AT89C52 that performs the following tasks:
 
 Use a 3-way switch system to control motor actions:
-Switch 1 → Start the motor in Clockwise direction.
-Switch 2 → Start the motor in Anti-clockwise direction.
-Switch 3 → Stop the motor.
+ - Switch 1 → Start the motor in Clockwise direction.
+ - Switch 2 → Start the motor in Anti-clockwise direction.
+ - Switch 3 → Stop the motor.
 
-DC Motor Control System Using MCU
-Hardware Components Required
-Microcontroller: 8051 (AT89C52 or similar)
-Motor Driver IC: L293D or L298N
-DC Motor: 12V DC Motor
-Power Supply: 12V DC (For Motor), 5V DC (For MCU)
-3 Push Buttons (Switches): For controlling the motor
-Resistors: 10KΩ pull-up resistors for switches
-Connecting Wires & Breadboard/PCB
+__Hardware Components Required:__
+ - Microcontroller: 8051 (AT89C52 or similar)
+ - Motor Driver IC: L293D or L298N
+ - DC Motor: 12V DC Motor
+ - Power Supply: 12V DC (For Motor), 5V DC (For MCU)
+ - 3 Push Buttons (Switches): For controlling the motor
+ - Resistors: 10KΩ pull-up resistors for switches
+ - Connecting Wires & Breadboard/PCB
 
-Hardware Connection
-Motor Driver (L293D) to Microcontroller (8051)
-IN1 (L293D Pin 2) → P1.0 (MOTOR_IN1)
-IN2 (L293D Pin 7) → P1.1 (MOTOR_IN2)
-Enable Pin (L293D Pin 1) → P1.2 (MOTOR_ENA)
-Vcc (L293D Pin 16) → +5V
-GND (L293D Pins 4, 5, 12, 13) → GND
-Motor Power (L293D Pin 8) → +12V
-Motor Output (L293D Pins 3, 6) → DC Motor Terminals
+__Hardware Connection:__
+ - Motor Driver (L293D) to Microcontroller (8051)
+ - IN1 (L293D Pin 2) → P1.0 (MOTOR_IN1)
+ - IN2 (L293D Pin 7) → P1.1 (MOTOR_IN2)
+ - Enable Pin (L293D Pin 1) → P1.2 (MOTOR_ENA)
+ - Vcc (L293D Pin 16) → +5V
+ - GND (L293D Pins 4, 5, 12, 13) → GND
+ - Motor Power (L293D Pin 8) → +12V
+ - Motor Output (L293D Pins 3, 6) → DC Motor Terminals
 
 Switch Connections
-Switch 1 (Clockwise) → P3.0 (SWITCH1)
-Switch 2 (Anti-clockwise) → P3.1 (SWITCH2)
-Switch 3 (Stop) → P3.2 (SWITCH3)
-One side of all switches connected to GND
-Other side connected to respective P3.x pins with a 10KΩ pull-up resistor
+ - Switch 1 (Clockwise) → P3.0 (SWITCH1)
+ - Switch 2 (Anti-clockwise) → P3.1 (SWITCH2)
+ - Switch 3 (Stop) → P3.2 (SWITCH3)
+ - One side of all switches connected to GND
+ - Other side connected to respective P3.x pins with a 10KΩ pull-up resistor
 
-Software Used
-Keil uVision – For Embedded C programming
-Proteus – For simulation
-Flash Magic / ISP Programmer – For flashing the program into the MCU
+__Software Used:__
+ - Keil uVision – For Embedded C programming
+ - Proteus – For simulation
+ - Flash Magic / ISP Programmer – For flashing the program into the MCU
+
+__Working:__
+ - The system initializes the motor control pins and sets up the switches as inputs.
+ - When Switch 1 is pressed, the motor rotates clockwise.
+ - When Switch 2 is pressed, the motor rotates anti-clockwise.
+ - When Switch 3 is pressed, the motor stops immediately.
+ - The program uses a while loop to ensure switch de-bouncing and waits for the button to be released before taking another action.
+
+__Software Simulation:__
 
 
-Working
-The system initializes the motor control pins and sets up the switches as inputs.
-When Switch 1 is pressed, the motor rotates clockwise.
-When Switch 2 is pressed, the motor rotates anti-clockwise.
-When Switch 3 is pressed, the motor stops immediately.
-The program uses a while loop to ensure switch de-bouncing and waits for the button to be released before taking another action.
+__Hardware Simulation:__
 
+
+__Project Code:__
+``
 #include <reg52.h>  // Header file for 89C52
-
 // Motor Driver Pins (L293D or L298N)
 sbit MOTOR_IN1 = P1^0;  // Motor Input 1 (Clockwise)
 sbit MOTOR_IN2 = P1^1;  // Motor Input 2 (Anti-clockwise)
 sbit MOTOR_ENA = P1^2;  // Enable Pin for Motor Driver
-
 // Switch Pins
 sbit SWITCH1 = P3^0;    // Start Clockwise
 sbit SWITCH2 = P3^1;    // Start Anti-clockwise
 sbit SWITCH3 = P3^2;    // Stop Motor
-
 // Function prototypes
 void delay_ms(unsigned int);
 void Motor_Stop();
 void Motor_CW();
 void Motor_CCW();
-
 void main() {
     // Initialize motor control pins
     MOTOR_IN1 = 0;
     MOTOR_IN2 = 0;
     MOTOR_ENA = 1;  // Enable motor driver
-    
     // Initialize switch pins as input
     SWITCH1 = 1;
     SWITCH2 = 1;
     SWITCH3 = 1;
-    
     while(1) {
         if(SWITCH1 == 0) {       // Clockwise Rotation
             Motor_CW();
@@ -854,51 +834,46 @@ void main() {
         }
     }
 }
-
 void Motor_CW() {
     MOTOR_IN1 = 1;
     MOTOR_IN2 = 0;
 }
-
 void Motor_CCW() {
     MOTOR_IN1 = 0;
     MOTOR_IN2 = 1;
 }
-
 void Motor_Stop() {
     MOTOR_IN1 = 0;
     MOTOR_IN2 = 0;
 }
-
 // Simple delay function in milliseconds
 void delay_ms(unsigned int ms) {
     unsigned int i, j;
     for(i = 0; i < ms; i++)
         for(j = 0; j < 1275; j++); // Adjust based on clock frequency
 }
-
+```
 ____________________________________________________________________________________________________________________________________________________________________________
 
-7. Title: Servo Motor Control Using MCU
+7. Title: Servo Motor Control Using AT89C52
 
-Objective:
-Write an Embedded C program to interface a servo motor with the MCU that performs the following tasks using push buttons:
+Objective: Write an Embedded C program to interface a servo motor with the AT89C52 that performs the following tasks using push buttons:
 
 Button 1 → Move the servo motor to 0° position.
 Button 2 → Move the servo motor to 90° position.
 Button 3 → Move the servo motor to 180° position.
 Display the servo angle on a connected LCD display
 
-Hardware Components Required
-Microcontroller: 8051 (AT89C52 or similar)
-Servo Motor: SG90 or MG995
-16x2 LCD Display (for angle display)
-Push Buttons (3 units): For 0°, 90°, and 180° position control
-Resistors: 10KΩ pull-up resistors for switches
-Power Supply: 5V DC (for MCU, Servo, and LCD)
-Connecting Wires & Breadboard/PCB
+Hardware Components Required:__
+ - Microcontroller: 8051 (AT89C52 or similar)
+ - Servo Motor: SG90 or MG995
+ - 16x2 LCD Display (for angle display)
+ - Push Buttons (3 units): For 0°, 90°, and 180° position control
+ - Resistors: 10KΩ pull-up resistors for switches
+ - Power Supply: 5V DC (for MCU, Servo, and LCD)
+ - Connecting Wires & Breadboard/PCB
 
-Hardware Connection
+__Hardware Connection:__
 Servo Motor to Microcontroller (8051)
 Servo Signal Pin → P1.0 (SERVO_PIN)
 Servo VCC → 5V
@@ -1086,10 +1061,10 @@ void delay_ms(unsigned int ms) {
 
 ___________________________________________________________________________________________________________________________________________________________________________
 
-8. Title: Temperature Sensor (LM35) Interfacing with MCU
+8. Title: Temperature Sensor (LM35) Interfacing with AT89C52
 
 Objective:
-Write an Embedded C program to interface an LM35 Temperature Sensor with the MCU that performs the following tasks:
+Write an Embedded C program to interface an LM35 Temperature Sensor with the AT89C52 that performs the following tasks:
 
 Continuously read the temperature value from the LM35 sensor.
 Display the temperature value on an LCD display or Serial Monitor.
@@ -1290,10 +1265,10 @@ void delay_us(unsigned int us) {
 
 ____________________________________________________________________________________________________________________________________________________________________________
 
-9. Title: DHT11 Temperature and Humidity Sensor Interfacing with MCU
+9. Title: DHT11 Temperature and Humidity Sensor Interfacing with AT89C52
 
 Objective:
-Write an Embedded C program to interface a DHT11 Temperature and Humidity Sensor with the MCU that performs the following tasks:
+Write an Embedded C program to interface a DHT11 Temperature and Humidity Sensor with the AT89C52 that performs the following tasks:
 
 Read temperature and humidity data from the DHT11 sensor.
 Display the sensor readings on an LCD display.
@@ -1499,3 +1474,473 @@ void delay_us(unsigned int us) {
 }
 
 _______________________________________________________________________________________________________________________________________________________________________
+
+10. Title: Fire Sensor Interfacing with AT89C52
+
+Objective:
+Write an Embedded C program to interface a Fire Sensor (Flame Sensor) with the AT89C52 that performs the following tasks:
+
+Detect the presence of fire or flame using the fire sensor.
+Display "Fire Detected" or "No Fire" on an LCD display or Serial Monitor.
+If fire is detected, activate a buzzer or LED alert for warning.
+
+Hardware Components Required:
+Microcontroller (8051 or compatible)
+Fire Sensor (Flame Sensor)
+16x2 LCD Display
+Buzzer
+Connecting Wires
+Power Supply (5V)
+Resistors (if required)
+Breadboard / PCB for circuit assembly
+
+Hardware Connection:
+The fire sensor output is connected to P1.0 as a digital input.
+The buzzer is connected to P1.1 as a digital output.
+The LCD is interfaced in 4-bit mode, with RS connected to P2.5 and EN connected to P2.6. The LCD data lines (D4-D7) are connected to P3.4 to P3.7.
+
+Software Used:
+Keil uVision for Embedded C coding and simulation.
+Proteus for circuit simulation.
+Flash Magic for flashing code to the microcontroller.
+
+Working:
+The system continuously monitors the fire sensor output.
+If the sensor detects fire (active-low, i.e., logic 0):
+                  The LCD displays "Fire Detected!".
+                  The buzzer turns ON for alert.
+If no fire is detected (logic 1 from the sensor):
+               The LCD displays "No Fire".
+                The buzzer turns OFF.
+The program checks the sensor status every 500 milliseconds.
+
+#include <reg52.h>
+#include <stdio.h>
+#include <intrins.h>
+
+// Fire Sensor and Buzzer Connections
+sbit FIRE_SENSOR = P1^0;  // Digital input from fire sensor
+sbit BUZZER = P1^1;       // Buzzer output
+
+// LCD Interface (4-bit mode)
+sbit RS = P2^5;
+sbit EN = P2^6;
+#define LCD_DATA P3
+
+char lcd_buffer[16];
+
+// Function Prototypes
+void LCD_Init_4bit(void);
+void LCD_Command_4bit(unsigned char);
+void LCD_Write_4bit(unsigned char, bit);
+void LCD_String_4bit(char*);
+void LCD_Clear(void);
+void delay_ms(unsigned int);
+void System_Init(void);
+void Check_Fire_Sensor(void);
+void Sound_Alarm(bit state);
+
+void main() {
+    System_Init();
+    
+    while(1) {
+        Check_Fire_Sensor();
+        delay_ms(500); // Check every 500ms
+    }
+}
+
+/*--- System Initialization ---*/
+void System_Init(void) {
+    // Initialize I/O pins
+    FIRE_SENSOR = 1; // Input mode
+    BUZZER = 0;      // Buzzer off
+    
+    // Initialize LCD
+    LCD_Init_4bit();
+    LCD_Clear();
+    LCD_String_4bit("Fire Detection");
+    delay_ms(2000);
+    LCD_Clear();
+}
+
+/*--- Fire Detection Logic ---*/
+void Check_Fire_Sensor(void) {
+    if(FIRE_SENSOR == 0) { // Active-low sensor (0 = fire detected)
+        LCD_Command_4bit(0x80); // First line
+        LCD_String_4bit("Fire Detected!");
+        Sound_Alarm(1); // Turn on buzzer
+    }
+    else {
+        LCD_Command_4bit(0x80); // First line
+        LCD_String_4bit("No Fire      ");
+        Sound_Alarm(0); // Turn off buzzer
+    }
+}
+
+/*--- Alarm Control ---*/
+void Sound_Alarm(bit state) {
+    BUZZER = state;
+}
+
+/*--- LCD Functions (4-bit mode) ---*/
+void LCD_Init_4bit(void) {
+    delay_ms(50);
+    LCD_Command_4bit(0x33);
+    LCD_Command_4bit(0x32);
+    LCD_Command_4bit(0x28); // 4-bit, 2-line, 5x8
+    LCD_Command_4bit(0x0C); // Display ON, cursor OFF
+    LCD_Command_4bit(0x06); // Auto increment
+    LCD_Command_4bit(0x01); // Clear display
+    delay_ms(2);
+}
+
+void LCD_Write_4bit(unsigned char dat, bit mode) {
+    RS = mode;
+    LCD_DATA = (LCD_DATA & 0x0F) | (dat & 0xF0);
+    EN = 1; _nop_(); _nop_(); EN = 0;
+    LCD_DATA = (LCD_DATA & 0x0F) | ((dat << 4) & 0xF0);
+    EN = 1; _nop_(); _nop_(); EN = 0;
+    delay_ms(1);
+}
+
+void LCD_Command_4bit(unsigned char cmd) {
+    LCD_Write_4bit(cmd, 0);
+}
+
+void LCD_String_4bit(char *str) {
+    while(*str) LCD_Write_4bit(*str++, 1);
+}
+
+void LCD_Clear(void) {
+    LCD_Command_4bit(0x01);
+    delay_ms(2);
+}
+
+/*--- Delay Function ---*/
+void delay_ms(unsigned int ms) {
+    unsigned int i, j;
+    for(i=0; i<ms; i++)
+        for(j=0; j<1275; j++); // For 12MHz
+}
+
+
+__________________________________________________________________________________________________________________________________________________________________________
+
+11. Title: LED Blinking 
+To understand and implement LED control using a microcontroller by turning it on and off at a fixed interval.
+
+Description:
+LED blinking is a basic embedded system project that involves programming a microcontroller to toggle an LED using GPIO pins. A delay function controls the blinking rate, demonstrating digital output control and timing functions.
+
+
+Hardware Components Required:
+Microcontroller (8051 or compatible)
+LED
+Current Limiting Resistor (220Ω - 1kΩ)
+Connecting Wires
+Power Supply (5V)
+Breadboard / PCB for circuit assembly
+
+Hardware Connection:
+The LED is connected to P1.0 of the microcontroller.
+A current-limiting resistor (220Ω - 1kΩ) is placed in series with the LED to prevent excessive current flow.
+The anode (positive terminal) of the LED is connected to P1.0, and the cathode (negative terminal) is connected to GND.
+
+Software Used:
+Keil uVision for Embedded C programming and simulation.
+Proteus for circuit simulation.
+Flash Magic for flashing the program onto the microcontroller.
+
+Working:
+The microcontroller continuously toggles the LED state in an infinite loop.
+The LED is turned ON by setting P1.0 = 1.
+A 500ms delay is applied to keep the LED ON for a short period.
+The LED is turned OFF by setting P1.0 = 0.
+Another 500ms delay is applied before the next toggle.
+This cycle repeats indefinitely, causing the LED to blink at a fixed interval of 1 second (ON for 500ms, OFF for 500ms).
+
+#include <reg52.h>  // Header file for 89C52
+
+// LED connection - change this to your actual pin
+sbit LED = P1^0;    // LED connected to P1.0
+
+// Function prototype
+void delay_ms(unsigned int ms);
+
+void main() {
+    while(1) {  // Infinite loop
+        LED = 1;         // Turn LED ON
+        delay_ms(500);   // 500ms delay
+        
+        LED = 0;         // Turn LED OFF
+        delay_ms(500);   // 500ms delay
+    }
+}
+
+// Delay function in milliseconds
+void delay_ms(unsigned int ms) {
+    unsigned int i, j;
+    for(i = 0; i < ms; i++)
+        for(j = 0; j < 1275; j++); // Adjust based on clock frequency
+}
+
+
+___________________________________________________________________________________________________________________________________________________________________________
+
+12. Title: Sharp Distance Sensor Interfacing with AT89C52
+
+Objective:
+Write an Embedded C program to interface a Sharp Distance Sensor with the AT89C52 that performs the following tasks:
+
+Continuously read the distance value from the Sharp Distance Sensor.
+Display the distance value (in cm) and voltage (in V) on an LCD display.
+
+Hardware Components Required:
+Microcontroller (8051 or compatible)
+Sharp Distance Sensor (e.g., GP2Y0A21YK0F)
+ADC0831 (8-bit ADC for interfacing the sensor)
+16x2 LCD Display
+Resistors (if required)
+Capacitors (for power stabilization)
+Connecting Wires
+Power Supply (5V)
+Breadboard / PCB for circuit assembly
+
+Hardware Connection:
+The Sharp Distance Sensor output is connected to the ADC0831 input.
+The ADC0831 is interfaced with the 8051 MCU as follows:
+        CS (Chip Select) → P1.0
+        CLK (Clock Signal) → P1.1
+        DO (Data Out) → P1.2
+
+The LCD Display is connected in 4-bit mode, with control and data lines as:
+        RS → P2.5
+        EN → P2.6
+        Data Lines (D4-D7) → P3.4 to P3.7
+
+Software Used:
+Keil uVision for Embedded C coding and debugging.
+Proteus for circuit simulation.
+Flash Magic for flashing the microcontroller.
+
+Working:
+The ADC0831 reads the analog voltage from the Sharp Distance Sensor and converts it to an 8-bit digital value.
+The voltage is calculated using the formula:
+
+![image](https://github.com/user-attachments/assets/c03fb754-c9bb-4eed-bf77-81bcc935effa)
+
+The approximate distance (in cm) is computed using an empirical formula based on sensor characteristics.
+The calculated distance and voltage are displayed on the 16x2 LCD display.
+The system continuously updates the display every 200 milliseconds to provide real-time distance measurement.
+
+
+#include <reg52.h>
+#include <stdio.h>
+#include <intrins.h>
+
+// ADC Interface (using ADC0831)
+sbit ADC_CS = P1^0;   // Chip Select
+sbit ADC_CLK = P1^1;  // Clock
+sbit ADC_DO = P1^2;   // Data Out
+
+// LCD Interface (4-bit mode)
+sbit RS = P2^5;
+sbit EN = P2^6;
+#define LCD_DATA P3
+
+// Variables
+char lcd_buffer[16];
+unsigned int distance_cm;
+float voltage;
+float inv_voltage;  // Moved to global scope
+float term1;        // Moved to global scope
+float term2;        // Moved to global scope
+float approx;       // Moved to global scope
+
+// Function Prototypes
+void LCD_Init_4bit(void);
+void LCD_Command_4bit(unsigned char);
+void LCD_Write_4bit(unsigned char, bit);
+void LCD_String_4bit(char*);
+void LCD_Clear(void);
+void delay_ms(unsigned int);
+void delay_us(unsigned int);
+unsigned char ADC_Read(void);
+unsigned int Read_Distance(void);
+float Read_Voltage(void);
+void Update_Display(void);
+
+void main() {
+    // Initialize peripherals
+    ADC_CS = 1;
+    ADC_CLK = 0;
+    LCD_Init_4bit();
+    LCD_Clear();
+    LCD_String_4bit("Sharp Sensor");
+    delay_ms(1000);
+    LCD_Clear();
+    
+    while(1) {
+        distance_cm = Read_Distance();
+        voltage = Read_Voltage();
+        Update_Display();
+        delay_ms(200); // Update every 200ms
+    }
+}
+
+/* Read distance in cm (10-80cm range) */
+unsigned int Read_Distance(void) {
+    unsigned char adc_value = ADC_Read();
+    voltage = (adc_value * 5.0) / 256.0; // 8-bit ADC with 5V reference
+    
+    // Empirical conversion for GP2Y0A21YK0F
+    if(voltage < 0.4) return 80;  // Minimum detectable distance
+    
+    // Calculate using approximation
+    inv_voltage = 1.0 / voltage;
+    term1 = inv_voltage;
+    term2 = 0.15 * inv_voltage * inv_voltage;
+    approx = term1 - term2;
+    
+    return (unsigned int)(27.86 * approx);
+}
+
+/* Read voltage from sensor */
+float Read_Voltage(void) {
+    return (ADC_Read() * 5.0) / 256.0;
+}
+
+/* ADC Read Function */
+unsigned char ADC_Read(void) {
+    unsigned char i, value = 0;
+    
+    ADC_CS = 0;         // Start conversion
+    _nop_(); _nop_();   // Small delay
+    
+    // Read 8 bits MSB first
+    for(i = 0; i < 8; i++) {
+        ADC_CLK = 1;
+        _nop_();
+        value <<= 1;
+        if(ADC_DO) value |= 0x01;
+        ADC_CLK = 0;
+        _nop_();
+    }
+    
+    ADC_CS = 1; // End conversion
+    return value;
+}
+
+/* Update LCD Display */
+void Update_Display(void) {
+    LCD_Command_4bit(0x80); // First line
+    sprintf(lcd_buffer, "Dist: %3d cm", distance_cm);
+    LCD_String_4bit(lcd_buffer);
+    
+    LCD_Command_4bit(0xC0); // Second line
+    sprintf(lcd_buffer, "Volt: %.2f V", voltage);
+    LCD_String_4bit(lcd_buffer);
+}
+
+/* LCD Functions (4-bit mode) */
+void LCD_Init_4bit(void) {
+    delay_ms(50);
+    LCD_Command_4bit(0x33);
+    LCD_Command_4bit(0x32);
+    LCD_Command_4bit(0x28); // 4-bit, 2-line, 5x8
+    LCD_Command_4bit(0x0C); // Display ON, cursor OFF
+    LCD_Command_4bit(0x06); // Auto increment
+    LCD_Command_4bit(0x01); // Clear display
+    delay_ms(2);
+}
+
+void LCD_Write_4bit(unsigned char dat, bit mode) {
+    RS = mode;
+    LCD_DATA = (LCD_DATA & 0x0F) | (dat & 0xF0);
+    EN = 1; delay_us(1); EN = 0;
+    LCD_DATA = (LCD_DATA & 0x0F) | ((dat << 4) & 0xF0);
+    EN = 1; delay_us(1); EN = 0;
+    delay_us(100);
+}
+
+void LCD_Command_4bit(unsigned char cmd) {
+    LCD_Write_4bit(cmd, 0);
+}
+
+void LCD_String_4bit(char *str) {
+    while(*str) LCD_Write_4bit(*str++, 1);
+}
+
+void LCD_Clear(void) {
+    LCD_Command_4bit(0x01);
+    delay_ms(2);
+}
+
+/* Delay Functions */
+void delay_ms(unsigned int ms) {
+    unsigned int i, j;
+    for(i=0; i<ms; i++)
+        for(j=0; j<1275; j++); // For 12MHz
+}
+
+void delay_us(unsigned int us) {
+    while(us--) {
+        _nop_(); _nop_(); _nop_(); _nop_();
+    }
+}
+
+__________________________________________________________________________________________________________________________________________________________________________
+
+13. Title: Ultrasonic Sensor (HC-SR04) Interfacing with AT89C52
+
+Objective:
+Write an Embedded C program to interface an Ultrasonic Sensor (HC-SR04) with the MCU that performs the following tasks:
+
+Measure the distance of an object in centimeters (cm) using the ultrasonic sensor.
+Display the measured distance on an LCD display or Serial Monitor.
+If the detected distance is less than 10 cm, activate a buzzer or LED alert for warning.
+
+Hardware Components Required:
+Microcontroller (8051 or compatible)
+Ultrasonic Sensor (HC-SR04)
+16x2 LCD Display
+Buzzer (for alerting when distance < 10 cm)
+Resistors (if required)
+Capacitors (for power stabilization)
+Power Supply (5V)
+Connecting Wires
+Breadboard / PCB for circuit assembly
+
+Hardware Connection:
+Ultrasonic Sensor (HC-SR04) connections with 8051 MCU:
+        TRIG (Trigger Pin) → P1.0
+        ECHO (Echo Pin) → P1.1
+
+Buzzer for alerting when distance is less than 10 cm:
+        BUZZER Pin → P1.2
+
+LCD Display connections (4-bit mode):
+        RS → P2.5
+        EN → P2.6
+        Data Lines (D4-D7) → P3.4 to P3.7
+
+Software Used:
+Keil uVision for Embedded C programming.
+Proteus for circuit simulation.
+Flash Magic for flashing the microcontroller.
+
+Working:
+The HC-SR04 Ultrasonic Sensor sends out ultrasonic waves through the TRIG pin.
+When the waves hit an object and reflect back, the ECHO pin becomes high.
+The microcontroller calculates the time taken for the pulse to return and converts it into distance (in cm) using the formula:
+
+![image](https://github.com/user-attachments/assets/6c14716e-db48-4402-8f0e-3e3e51058e1a)
+
+​
+ 
+where Speed of Sound = 340 m/s (or 0.034 cm/μs).
+The calculated distance is displayed on the LCD screen.
+If the distance is less than 10 cm, the buzzer is activated as a warning.
+The system updates the display every 200ms for real-time monitoring.
+
+___________________________________________________________________________________________________________________________________________________________________________
