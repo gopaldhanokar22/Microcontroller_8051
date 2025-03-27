@@ -1832,16 +1832,16 @@ __Hardware Components Required:__
  - Breadboard / PCB for circuit assembly
 
 __Hardware Connection:__\
-Ultrasonic Sensor (HC-SR04) connections with 8051 MCU:
-        - TRIG (Trigger Pin) → P1.0
+Ultrasonic Sensor (HC-SR04) connections with 8051 MCU:\
+        - TRIG (Trigger Pin) → P1.0\
         - ECHO (Echo Pin) → P1.1
 
-Buzzer for alerting when distance is less than 10 cm:
+Buzzer for alerting when distance is less than 10 cm:\
         - UZZER Pin → P1.2
 
-LCD Display connections (4-bit mode):
-        - RS → P2.5
-        - EN → P2.6
+LCD Display connections (4-bit mode):\
+        - RS → P2.5\
+        - EN → P2.6\
         - Data Lines (D4-D7) → P3.4 to P3.7
 
 __Software Used:__
