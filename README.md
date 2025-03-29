@@ -44,6 +44,14 @@ __Software Simulation:__
 
 __Hardware Simulation:__
 
+![IMG-20250330-WA0003](https://github.com/user-attachments/assets/ee5b6549-fda0-4427-bda4-611d2af48000)
+
+![IMG-20250330-WA0004](https://github.com/user-attachments/assets/a75d41f3-b994-4369-aa5b-37a0f6211f91)
+
+![IMG-20250330-WA0006](https://github.com/user-attachments/assets/30d799a1-57d3-4bce-aa24-d3bedba719f3)
+
+![IMG-20250330-WA0007](https://github.com/user-attachments/assets/8b3fbfad-a6e0-4bc9-846f-90ae81e1e1a1)
+
 
 __Project Code:__
 ```
@@ -264,6 +272,8 @@ __Software Simulation:__
 
 
 __Hardware Simulation:__
+
+![IMG-20250330-WA0001](https://github.com/user-attachments/assets/f58635da-fc72-4450-94dc-5d347c0577de)
 
 
 __Project Code:__
@@ -1601,6 +1611,10 @@ __Software Simulation:__
 ![image](https://github.com/user-attachments/assets/4fe9d9d0-c269-4d57-9058-5502bfd13d57)
 
 __Hardware Simulation:__
+
+![IMG-20250330-WA0002](https://github.com/user-attachments/assets/14a90609-4c1b-4d45-82e6-ff429208c916)
+
+![IMG-20250330-WA0005](https://github.com/user-attachments/assets/b5fa6877-b131-4ea4-94c3-1ea0e89b0aa9)
 
 __Project Code:__
 ```
