@@ -1,0 +1,202 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/25/2025  22:59:42  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\USERS\DELL\APPDATA\LOCAL\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\counter.obj TO .\Objects\counter P
+>> RINT (.\Listings\counter.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\counter.obj (COUNTER)
+  C:\USERS\DELL\APPDATA\LOCAL\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\counter (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000CH     UNIT         ?DT?COUNTER
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     007AH     UNIT         ?PR?MAIN?COUNTER
+            CODE    0906H     0024H     UNIT         ?PR?_DELAY_MS?COUNTER
+            CODE    092AH     0020H     UNIT         ?PR?_DISPLAY_NUMBER?COUNTER
+            CODE    094AH     0011H     UNIT         ?C_INITSEG
+            CODE    095BH     0008H     UNIT         ?PR?CHECKRESET?COUNTER
+            CODE    0963H     0008H     UNIT         ?PR?CHECKINCREMENT?COUNTER
+            CODE    096BH     0008H     UNIT         ?PR?CHECKDECREMENT?COUNTER
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\counter (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?COUNTER
+  +--> ?C_INITSEG
+
+?PR?MAIN?COUNTER
+  +--> ?PR?CHECKRESET?COUNTER
+  +--> ?PR?_DELAY_MS?COUNTER
+  +--> ?PR?CHECKINCREMENT?COUNTER
+  +--> ?PR?CHECKDECREMENT?COUNTER
+  +--> ?PR?_DISPLAY_NUMBER?COUNTER
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/25/2025  22:59:42  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\counter (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0014H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        COUNTER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:0008H         PUBLIC        counter
+  C:095BH         PUBLIC        checkReset
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:096BH         PUBLIC        checkDecrement
+  D:000AH         PUBLIC        seg_pattern
+  C:088CH         PUBLIC        main
+  C:0963H         PUBLIC        checkIncrement
+  B:00B0H.0       PUBLIC        ResetSW
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00B0H.2       PUBLIC        DecrementSW
+  C:090AH         PUBLIC        _delay_ms
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/25/2025  22:59:42  PAGE 3
+
+
+  B:00B0H.1       PUBLIC        IncrementSW
+  D:00C8H         PUBLIC        T2CON
+  C:092AH         PUBLIC        _display_number
+  D:00D0H         PUBLIC        PSW
+  C:0906H         SYMBOL        L?0042
+  -------         PROC          L?0041
+  -------         ENDPROC       L?0041
+  C:0906H         SYMBOL        L?0042
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:090AH         LINE#         25
+  C:090AH         LINE#         27
+  C:0914H         LINE#         28
+  C:0929H         LINE#         29
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          CHECKRESET
+  C:095BH         LINE#         32
+  -------         ENDPROC       CHECKRESET
+  -------         PROC          CHECKINCREMENT
+  C:0963H         LINE#         33
+  -------         ENDPROC       CHECKINCREMENT
+  -------         PROC          CHECKDECREMENT
+  C:096BH         LINE#         34
+  -------         ENDPROC       CHECKDECREMENT
+  -------         PROC          _DISPLAY_NUMBER
+  D:0006H         SYMBOL        num
+  C:092AH         LINE#         37
+  C:092AH         LINE#         39
+  C:0935H         LINE#         40
+  C:0942H         LINE#         42
+  C:0949H         LINE#         43
+  -------         ENDPROC       _DISPLAY_NUMBER
+  -------         PROC          MAIN
+  C:088CH         LINE#         45
+  C:088CH         LINE#         47
+  C:088EH         LINE#         48
+  C:0890H         LINE#         49
+  C:0892H         LINE#         51
+  C:0892H         LINE#         53
+  C:0897H         LINE#         54
+  C:089AH         LINE#         55
+  C:089FH         LINE#         56
+  C:08A4H         LINE#         57
+  C:08A9H         LINE#         58
+  C:08A9H         LINE#         59
+  C:08A9H         LINE#         62
+  C:08AEH         LINE#         63
+  C:08B1H         LINE#         64
+  C:08B6H         LINE#         65
+  C:08BBH         LINE#         66
+  C:08CFH         LINE#         67
+  C:08CFH         LINE#         68
+  C:08CFH         LINE#         71
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/25/2025  22:59:42  PAGE 4
+
+
+  C:08D4H         LINE#         72
+  C:08D7H         LINE#         73
+  C:08DCH         LINE#         74
+  C:08E1H         LINE#         75
+  C:08F6H         LINE#         76
+  C:08F6H         LINE#         77
+  C:08F6H         LINE#         80
+  C:08FDH         LINE#         83
+  C:0904H         LINE#         84
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        COUNTER
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F5H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=21.0 xdata=0 code=374
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

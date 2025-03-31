@@ -1,0 +1,111 @@
+C51 COMPILER V9.60.7.0   COUNTER                                                           03/25/2025 22:59:42 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE COUNTER
+OBJECT MODULE PLACED IN .\Objects\counter.obj
+COMPILER INVOKED BY: C:\Users\DELL\AppData\Local\Keil_v5\C51\BIN\C51.EXE counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECT
+                    -EXTEND PRINT(.\Listings\counter.lst) TABS(2) OBJECT(.\Objects\counter.obj)
+
+line level    source
+
+   1          #include <reg52.h>  // Header file for 89C52
+   2          
+   3          // Define switch connections
+   4          sbit ResetSW = P3^0;
+   5          sbit IncrementSW = P3^1;
+   6          sbit DecrementSW = P3^2;
+   7          
+   8          // 7-segment display patterns (common cathode)
+   9          unsigned char seg_pattern[] = {
+  10              0x3F, // 0
+  11              0x06, // 1
+  12              0x5B, // 2
+  13              0x4F, // 3
+  14              0x66, // 4
+  15              0x6D, // 5
+  16              0x7D, // 6
+  17              0x07, // 7
+  18              0x7F, // 8
+  19              0x6F  // 9
+  20          };
+  21          
+  22          int counter = 0; // Global counter variable
+  23          
+  24          // Simple delay function in milliseconds
+  25          void delay_ms(unsigned int ms) {
+  26   1          unsigned int i, j;
+  27   1          for(i = 0; i < ms; i++)
+  28   1              for(j = 0; j < 1275; j++); // Adjust based on clock frequency
+  29   1      }
+  30          
+  31          // Modified button press detection without sbit parameter
+  32          bit checkReset() { return (ResetSW == 0); }
+  33          bit checkIncrement() { return (IncrementSW == 0); }
+  34          bit checkDecrement() { return (DecrementSW == 0); }
+  35          
+  36          // Function to display number on 7-segment
+  37          void display_number(int num) {
+  38   1          // For single digit display (0-9)
+  39   1          if(num < 0) num = 0; // Ensure non-negative
+  40   1          if(num > 9) num = 9; // Limit to single digit
+  41   1          
+  42   1          P2 = seg_pattern[num]; // Display the number
+  43   1      }
+  44          
+  45          void main() {
+  46   1          // Initialize switches as input
+  47   1          ResetSW = 1;
+  48   1          IncrementSW = 1;
+  49   1          DecrementSW = 1;
+  50   1          
+  51   1          while(1) {
+  52   2              // Check reset button with debounce
+  53   2              if(checkReset()) {
+  54   3                  delay_ms(20);
+C51 COMPILER V9.60.7.0   COUNTER                                                           03/25/2025 22:59:42 PAGE 2   
+
+  55   3                  if(checkReset()) {
+  56   4                      while(checkReset());
+  57   4                      counter = 0;
+  58   4                  }
+  59   3              }
+  60   2              
+  61   2              // Check increment button with debounce
+  62   2              if(checkIncrement()) {
+  63   3                  delay_ms(20);
+  64   3                  if(checkIncrement()) {
+  65   4                      while(checkIncrement());
+  66   4                      if(counter < 9) counter++;
+  67   4                  }
+  68   3              }
+  69   2              
+  70   2              // Check decrement button with debounce
+  71   2              if(checkDecrement()) {
+  72   3                  delay_ms(20);
+  73   3                  if(checkDecrement()) {
+  74   4                      while(checkDecrement());
+  75   4                      if(counter > 0) counter--;
+  76   4                  }
+  77   3              }
+  78   2              
+  79   2              // Display current counter value
+  80   2              display_number(counter);
+  81   2              
+  82   2              // Small delay for display stability
+  83   2              delay_ms(100);
+  84   2          }
+  85   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    214    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
