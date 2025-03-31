@@ -148,9 +148,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/3c3ce3bc-8758-494a-b46c-3a84c4ee71a2)
 
-__Hardware Simulation:__
-
-
 __Project Code:__
 ```
 #include <reg52.h>  // Header file for 89C52
@@ -367,9 +364,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/e4a2204e-30a4-46bd-a386-0d5854a914d1)
 
-__Hardware Simulation:__
-
-
 __Project Code:__
 ```
 #include <reg52.h>  // Header file for 89C52
@@ -545,9 +539,6 @@ __Working:__
 __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/da86cea7-814e-495e-bcf1-37cf3b5369b9)
-
-__Hardware Simulation:__
-
 
 __Project Code:__
 ```
@@ -802,10 +793,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/da26f91b-fad3-4ab4-9e72-e0421436bf75)
 
-
-__Hardware Simulation:__
-
-
 __Project Code:__
 ```
 #include <reg52.h>  // Header file for 89C52
@@ -921,8 +908,6 @@ __Working:__
 __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/660edb63-4eb9-45d7-9254-b881bdd7f00e)
-
-__Hardware Simulation:__
 
 __Project Code:__
 ```
@@ -1294,9 +1279,6 @@ H:xx% T:xx°C
 ```
  - The data is updated every 2 seconds to reflect real-time changes.
 
-__Hardware Simulation:__
-
-
 __Project Code:__
 ```
 #include <reg52.h>
@@ -1471,8 +1453,6 @@ __Working:__
 __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/60f7f27c-eb08-4805-84e4-ca529061cb9c)
-
-__Hardware Simulation:__
 
 __Project Code:__
 ```
@@ -1879,8 +1859,6 @@ __Software Simulation:__
 
 ![image](https://github.com/user-attachments/assets/fddbefb7-834e-4d39-8489-75f1c98ce12b)
 
-__Hardware Simulation:__
-
 __Project Code:__
 ```
 #include <reg52.h>
@@ -2032,3 +2010,201 @@ void delay_us(unsigned int us) {
 }
 ```
 ___________________________________________________________________________________________________________________________________________________________________________
+__14. Title: Vibration Sensor-Based LED Control Using 8051 Microcontroller__
+
+*Objective:* To implement a simple vibration detection system using an 8051 microcontroller (AT89S52) that turns on an LED when a vibration is detected.
+
+*Functional Requirements:*\
+Detect vibrations using a sensor connected to the microcontroller.\
+Turn on the LED when a vibration is detected.\
+Turn off the LED when no vibration is detected.\
+Provide a small delay to ensure stable operation.\
+
+__Hardware Components Required:__
+ - 8051 Microcontroller (AT89S52)
+ - Vibration Sensor (SW-420 or equivalent)
+ - LED
+ - Resistors (as required)
+ - Capacitors (as required)
+ - Power Supply (5V DC)
+ - Jumper Wires
+ - Breadboard or PCB
+
+__Hardware Connection:__
+ - Connect Sensor output to P1.2 of the 8051.
+ - Connect LED to P1.3 through a resistor (e.g., 330Ω) to limit current.
+ - Connect Power (VCC) and GND to the respective microcontroller and sensor pins.
+ - Ensure the 8051 microcontroller is properly powered with a 5V regulated power supply.
+
+__Software Used:__
+ - Keil uVision for coding and simulation
+    
+__Working Principle:__
+ - The SW-420 vibration sensor is used to detect vibrations.
+ - When the sensor detects a vibration, it sends a HIGH signal to P1.2.
+ - The microcontroller reads this input and turns ON the LED at P1.3.
+ - If no vibration is detected, the LED remains OFF.
+ - A small delay ensures stable operation and prevents flickering.
+
+__Project code:__
+```
+#include <reg51.h>
+
+sbit LED = P1^3;       // Define LED at P1.3
+sbit Sensor = P1^2;   // Define Sensor at P1.2
+
+void delay(unsigned int time) {
+    unsigned int i, j;
+    for(i = 0; i < time; i++)
+        for(j = 0; j < 1275; j++);
+}
+
+void main() {
+    P1 = 0xFF; // Set Port 1 as input for sensor
+    LED = 0;   // Turn off LED initially
+    
+    while(1) {
+        if (Sensor == 1) {
+            LED = 1; // Turn on LED
+        } else {
+            LED = 0; // Turn off LED
+        }
+        delay(10);
+    }
+}
+```
+
+________________________________________________________________________________________________________________________________________________________________
+__15. Title: IR Sensor-Based Bidirectional Counter Using 8051 Microcontroller__
+
+*Objective:* To design and implement a bidirectional counter using an 8051 microcontroller and IR sensors. This system counts the number of people entering and exiting a room and displays the count on an LCD.
+
+*Functional Requirements:*\
+Detect entry and exit using IR sensors.\
+Increment the count when a person enters.\
+Decrement the count when a person exits.\
+Display the current count on an LCD.\
+Ensure proper synchronization between sensors to avoid false counting.
+
+__Hardware Components Required:__
+ - 8051 Microcontroller (AT89S52)
+ - 16x2 LCD Display
+ - IR Sensors (2 units)
+ - Resistors (as required)
+ - Capacitors (as required)
+ - Crystal Oscillator (11.0592 MHz)
+ - Power Supply (5V DC)
+ - Jumper Wires
+ - Breadboard or PCB
+
+__Hardware Connection:__
+ - IR Sensor 1 (Entrance Detector): Connected to P1.0.
+ - IR Sensor 2 (Exit Detector): Connected to P1.1.
+ - 16x2 LCD: Data pins connected to Port 2.
+ - RS: Connected to P3.0.
+ - EN: Connected to P3.1.
+ - Power (VCC) and GND: Connected to the respective microcontroller and sensor pins.
+
+__Software Used:__
+ - Keil uVision for coding and simulation
+ - Proteus for circuit simulation
+ - Flash Magic for programming the AT89S52 microcontroller
+
+__Working Principle:__
+ - The IR sensors detect movement at the entrance and exit.
+ - When someone enters (IR1 triggers before IR2), the counter increments.
+ - When someone exits (IR2 triggers before IR1), the counter decrements.
+ - The count is displayed on a 16x2 LCD in real time.
+
+__Project code:__
+```
+#include <reg51.h>
+#define LCD P2  // Define Port 2 as LCD data port
+
+sbit RS = P3^0;  // Register Select pin
+sbit EN = P3^1;  // Enable pin
+sbit IR1 = P1^0; // IR Sensor 1 (Entrance Detector)
+sbit IR2 = P1^1; // IR Sensor 2 (Exit Detector)
+
+unsigned int in_count = 0, out_count = 0, current_count = 0;
+
+void delay(unsigned int time) {
+    unsigned int i, j;
+    for(i = 0; i < time; i++)
+        for(j = 0; j < 1275; j++);
+}
+
+void lcd_cmd(unsigned char cmd) {
+    LCD = cmd;
+    RS = 0;
+    EN = 1;
+    delay(1);
+    EN = 0;
+}
+
+void lcd_data(unsigned char value) {  // Renamed 'data' to 'value'
+    LCD = value;
+    RS = 1;
+    EN = 1;
+    delay(1);
+    EN = 0;
+}
+
+void lcd_init() {
+    lcd_cmd(0x38); // 2-line mode, 5x7 matrix
+    lcd_cmd(0x0C); // Display ON, Cursor OFF
+    lcd_cmd(0x06); // Auto increment cursor
+    lcd_cmd(0x01); // Clear display
+    lcd_cmd(0x80); // Move cursor to home position
+}
+
+void lcd_string(char *str) {
+    while(*str) {
+        lcd_data(*str);
+        str++;
+    }
+}
+
+void update_display() {
+    lcd_cmd(0x80);
+    lcd_string("IN: ");
+    lcd_data(in_count + '0');
+    lcd_string("  OUT: ");
+    lcd_data(out_count + '0');
+    
+    lcd_cmd(0xC0);
+    lcd_string("Current: ");
+    lcd_data(current_count + '0');
+}
+
+void main() {
+    P1 = 0xFF; // Set IR sensor pins as input
+    lcd_init();
+    update_display();
+    
+    while(1) {
+        if (IR1 == 0) {
+            delay(50);
+            if (IR2 == 0) {
+                in_count++;
+                current_count = in_count - out_count;
+                update_display();
+                while(IR1 == 0 || IR2 == 0); // Wait for both sensors to return to normal state
+            }
+        }
+        else if (IR2 == 0) {
+            delay(50);
+            if (IR1 == 0) {
+                if (out_count < in_count) {
+                    out_count++;
+                    current_count = in_count - out_count;
+                    update_display();
+                    while(IR1 == 0 || IR2 == 0);
+                }
+            }
+        }
+    }
+}
+```
+
+___________________________________________________________________________________________________________________________________________________________________
