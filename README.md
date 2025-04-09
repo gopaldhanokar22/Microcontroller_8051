@@ -1,5 +1,24 @@
 # Microcontroller_8051
 
+__INDEX__
+01. Title: Traffic Light System Using Microcontroller 8051 
+02. Title: Counter Control System Using Microcontroller 8051
+03. Title: Seven Segment Display - Counting 0 to 9 Using Microcontroller 8051
+04. Title: LCD Interfacing with Microcontroller 8051
+05. Title: Basic Calculator Using Microcontroller 8051 and Keypad with LCD Display
+06. Title: DC Motor Control System Using Microcontroller 8051
+07. Title: Servo Motor Control Using Microcontroller 8051
+08. Title: Temperature Sensor (LM35) Interfacing with Microcontroller 8051
+09. Title: DHT11 Temperature and Humidity Sensor Interfacing with Microcontroller 8051
+10. Title: Fire Sensor Interfacing with Microcontroller 8051
+11. Title: LED Blinking with Microcontroller 8051
+12. Title: Sharp Distance Sensor Interfacing with Microcontroller 8051
+13. Title: Ultrasonic Sensor (HC-SR04) Interfacing with Microcontroller 8051
+14. Title: Vibration Sensor-Based LED Indicator Using SW-420 and Microcontroller 8051
+15. Title: Bi-Directional Counter Using IR Sensors and LCD
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
 __1. Title: Traffic Light System Using AT89C52__
 
 *Objective:* Design a traffic light system using Red, Yellow, and Green LEDs that mimic real-world traffic signals.
