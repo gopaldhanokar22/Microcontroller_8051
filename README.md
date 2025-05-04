@@ -1,5 +1,7 @@
 # Microcontroller_8051
 
+![3](https://github.com/user-attachments/assets/98fc795b-41ec-4a37-8bc3-d24fd15c5a29)
+
 __INDEX__
 01. Title: Traffic Light System Using Microcontroller 8051 
 02. Title: Counter Control System Using Microcontroller 8051
